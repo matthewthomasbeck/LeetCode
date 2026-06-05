@@ -2,25 +2,20 @@ class Solution {
 public:
     vector<int> twoSum(vector<int>& nums, int target) {
 
-        vector<int> result;
+        unordered_map <int, int> seen; // hash map where number = its index
         
         for (int i = 0; i < nums.size(); i++) {
 
-            for (int j = 0; j < nums.size(); j++) {
+            int neededNum = target - nums[i]; // needed number is desired num - current num
 
-                if (i != j) {
+            if (seen.count(neededNum)) { // has there been neededNum seen before?
 
-                    if (nums[i] + nums[j] == target) {
-
-                        result.push_back(i);
-                        result.push_back(j);
-
-                        return result;
-                    }
-                }
+                return {seen[neededNum], i}; // return index of current and needed num if so
             }
+
+            seen[nums[i]] = i; // if not, store number and index for later
         }
 
-        return {};
+        return {}; // return nothing if number never shows up
     }
 };
