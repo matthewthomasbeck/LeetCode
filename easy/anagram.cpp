@@ -7,15 +7,25 @@ public:
             return false; // return false immediately
         }
 
-        // in string, store character type and count
-        unordered_map<char, int> stringOne, stringTwo;
+        int freq[26] = {0}; // initialize frequency table to 0 with max 26 english chars
 
-        for (int i = 0; i < s.size(); i++) { // loop through strings
+        for (int i = 0; i < s.size(); i++) { // loop through string lengths
 
-            stringOne[s[i]]++;
-            stringTwo[t[i]]++;
+            // in c++, characters have numerical values; a = 97, and because it is the first
+            // character in the alphabet, every other character is:
+            // <char> - 'a'(97) = <char's position in the alphabet>
+            // this code finds the correct char's index in the table, and then increments if
+            // character in string 's', and then decrements if the character in string 't'
+            freq[s[i] - 'a']++;
+            freq[t[i] - 'a']--;
         }
 
-        return stringOne == stringTwo; // compare string chars and counts
+        for (int i = 0; i < 26; i++) { // loop through all characters in the alphabet
+
+            // if character count is not 0, then strings not the same
+            if (freq[i] != 0) return false;
+        }
+
+        return true; // return true by default
     }
 };
