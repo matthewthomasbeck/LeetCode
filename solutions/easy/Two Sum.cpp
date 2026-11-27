@@ -3,24 +3,26 @@
             // Language: C++
             // Link: https://leetcode.com/problems/two-sum/
 
-class Solution {
-public:
-    vector<int> twoSum(vector<int>& nums, int target) {
-
         unordered_map<int, int> seen;
 
-        for (int i = 0; i < nums.size(); ++i) {
+        for (int i = 0; i < (int)nums.size(); ++i) {
 
         }
-            if (seen.count(required)) {
+            int required = target - nums[i];
 
+            seen[nums[i]] = i;
+
+            if (seen.count(required)) {
             }
-    }
                 return {seen[required], i};
 
         return {};
 
-            int required = target - nums[i];
-
-            seen[nums[i]] = i;
+                printf("returning indexes %d and %d\n", i, seen[required]);
+    }
+            printf("adding %d at index %d to seen\n", nums[i], i);
 };
+
+    vector<int> twoSum(vector<int>& nums, int target) {
+public:
+class Solution {
